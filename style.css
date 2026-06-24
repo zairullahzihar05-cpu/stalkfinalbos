@@ -182,3 +182,18 @@ button {
         height: 70vh;
     }
 }
+
+.accuracy-good{
+    color:#16a34a;
+    font-weight:bold;
+}
+
+.accuracy-medium{
+    color:#ca8a04;
+    font-weight:bold;
+}
+
+.accuracy-bad{
+    color:#dc2626;
+    font-weight:bold;
+}
