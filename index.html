@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilaterasi SPMB Banjarmasin</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="left-panel">
+
+        <h1>🏠 Trilaterasi SPMB Banjarmasin</h1>
+
+        <p>
+            Masukkan jarak rumah ke SMA yang diketahui.
+            Minimal 3 sekolah.
+        </p>
+
+        <div id="schoolInputs"></div>
+
+        <div class="button-group">
+
+            <button id="calculateBtn">
+                Hitung Lokasi
+            </button>
+
+            <button id="resetBtn">
+                Reset
+            </button>
+
+        </div>
+
+        <div id="result">
+
+            <h2>Hasil</h2>
+
+            <p>
+                Latitude:
+                <span id="latResult">-</span>
+            </p>
+
+            <p>
+                Longitude:
+                <span id="lonResult">-</span>
+            </p>
+
+            <p>
+                Error:
+                <span id="errorResult">-</span>
+            </p>
+
+            <p>
+                Sekolah digunakan:
+            </p>
+
+            <ul id="usedSchools"></ul>
+
+            <button id="copyBtn">
+                Salin Koordinat
+            </button>
+
+            <a
+                id="mapsLink"
+                href="#"
+                target="_blank">
+
+                <button>
+                    Buka Google Maps
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="right-panel">
+
+        <div id="map"></div>
+
+    </div>
+
+</div>
+
+<script
+src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
