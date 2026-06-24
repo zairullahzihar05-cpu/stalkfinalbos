@@ -346,6 +346,13 @@ button:hover{
         width: 100%;
     }
 
+    .stats-grid{
+
+        grid-template-columns:
+        1fr;
+
+    }
+
     #map {
         height: 70vh;
     }
@@ -490,5 +497,89 @@ button:hover{
 #downloadPdfBtn:hover{
 
     background:#1d4ed8;
+
+}
+
+/* ===========================
+   DASHBOARD CARDS
+=========================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(
+        2,
+        1fr
+    );
+
+    gap:12px;
+
+    margin-bottom:15px;
+
+}
+
+.stat-card{
+
+    background:
+    rgba(
+        255,
+        255,
+        255,
+        0.8
+    );
+
+    border:
+    1px solid
+    rgba(
+        255,
+        255,
+        255,
+        0.4
+    );
+
+    border-radius:14px;
+
+    padding:14px;
+
+    transition:
+    all 0.25s ease;
+
+}
+
+.stat-card:hover{
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 8px 20px
+    rgba(
+        0,
+        0,
+        0,
+        0.08
+    );
+
+}
+
+.stat-title{
+
+    font-size:14px;
+
+    color:#64748b;
+
+    margin-bottom:8px;
+
+}
+
+.stat-value{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#0f172a;
 
 }
