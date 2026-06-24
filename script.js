@@ -562,33 +562,7 @@ document
 .getElementById("resetBtn")
 .addEventListener("click", () => {
 
-    document
-    .querySelectorAll("input[type='number']")
-    .forEach(input => {
-        input.value = "";
-    });
-
-    clearMap();
-
-    document.getElementById(
-        "latResult"
-    ).textContent = "-";
-
-    document.getElementById(
-        "lonResult"
-    ).textContent = "-";
-
-    document.getElementById(
-        "errorResult"
-    ).textContent = "-";
-
-    document.getElementById(
-        "accuracyBadge"
-    ).textContent = "-";
-
-    document.getElementById(
-        "usedSchools"
-    ).innerHTML = "";
+    alert("RESET DIKLIK");
 
 });
 
