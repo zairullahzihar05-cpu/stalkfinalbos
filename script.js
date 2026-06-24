@@ -562,11 +562,15 @@ document
 .getElementById("resetBtn")
 .addEventListener("click", () => {
 
-    document
-    .querySelectorAll("input[type='number']")
-    .forEach(input => {
-        input.value = "";
-    });
+    for(const school in schools){
+
+        const input =
+        document.getElementById(school);
+
+        if(input){
+            input.value = "";
+        }
+    }
 
     clearMap();
 
