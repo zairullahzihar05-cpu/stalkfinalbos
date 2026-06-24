@@ -889,3 +889,100 @@ document
 
     }
 );
+
+// =====================================================
+// DOWNLOAD PDF
+// =====================================================
+
+document
+.getElementById(
+    "downloadPdfBtn"
+)
+.addEventListener(
+    "click",
+    () => {
+
+        const {
+            jsPDF
+        } =
+        window.jspdf;
+
+        const pdf =
+        new jsPDF();
+
+        const lat =
+        document
+        .getElementById(
+            "latResult"
+        )
+        .textContent;
+
+        const lon =
+        document
+        .getElementById(
+            "lonResult"
+        )
+        .textContent;
+
+        const error =
+        document
+        .getElementById(
+            "errorResult"
+        )
+        .textContent;
+
+        const confidence =
+        document
+        .getElementById(
+            "confidenceResult"
+        )
+        .textContent;
+
+        pdf.setFontSize(18);
+
+        pdf.text(
+            "HASIL TRILATERASI SPMB",
+            20,
+            20
+        );
+
+        pdf.setFontSize(12);
+
+        pdf.text(
+            "Latitude: " + lat,
+            20,
+            40
+        );
+
+        pdf.text(
+            "Longitude: " + lon,
+            20,
+            50
+        );
+
+        pdf.text(
+            "Error: " + error,
+            20,
+            60
+        );
+
+        pdf.text(
+            "Kepercayaan: " + confidence,
+            20,
+            70
+        );
+
+        pdf.text(
+            "Tanggal: " +
+            new Date()
+            .toLocaleString(),
+            20,
+            80
+        );
+
+        pdf.save(
+            "hasil_trilaterasi.pdf"
+        );
+
+    }
+);
