@@ -317,6 +317,15 @@ button:hover{
 
     overflow:hidden;
 
+    box-shadow:
+    0 8px 24px
+    rgba(
+        0,
+        0,
+        0,
+        0.08
+    );
+
 }
 
 /* ===========================
@@ -394,9 +403,7 @@ button:hover{
         0.08
     );
 
-    transition:
-    all 0.3s ease;
-
+   transition: all 0.3s ease;
 }
 
 #historyBox:hover{
@@ -414,7 +421,13 @@ button:hover{
 
     border-radius:8px;
 
-    background:#f8fafc;
+    background:
+    rgba(
+        255,
+        255,
+        255,
+        0.8
+    );
 
     border:1px solid #e2e8f0;
 
