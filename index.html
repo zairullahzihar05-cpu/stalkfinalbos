@@ -15,7 +15,26 @@
 
 <div class="container">
 
-    <div class="left-panel">
+    <div id="sidebar">
+
+    <h2>☰ Menu</h2>
+
+    <button id="dashboardTab">
+        🏠 Dashboard
+    </button>
+
+    <button id="historyTab">
+        📜 Riwayat
+    </button>
+
+    <button id="aboutTab">
+        ℹ️ Tentang
+    </button>
+
+</div>
+
+  <div id="dashboardPage"
+    class="left-panel">
 
         <h1>🏠 Trilaterasi SPMB Banjarmasin</h1>
 
@@ -38,36 +57,82 @@
 
         </div>
 
-        <div id="result">
+      <div id="result">
 
-            <h2>Hasil</h2>
+    <h2>Hasil</h2>
 
-            <p>
-                Latitude:
-                <span id="latResult">-</span>
-            </p>
+    <div class="stats-grid">
 
-            <p>
-                Longitude:
-                <span id="lonResult">-</span>
-            </p>
+        <div class="stat-card">
 
-            <p>
-                Error:
-                <span id="errorResult">-</span>
-            </p>
+            <div class="stat-title">
+                📍 Latitude
+            </div>
 
-            <p>
-                Kepercayaan:
-                <span id="confidenceResult">
+            <div
+            id="latResult"
+            class="stat-value">
+
                 -
-                </span>
-            </p>
-            
-            <p>
-                Akurasi:
-                <span id="accuracyBadge">-</span>
-            </p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-title">
+                📍 Longitude
+            </div>
+
+            <div
+            id="lonResult"
+            class="stat-value">
+
+                -
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-title">
+                📏 Error
+            </div>
+
+            <div
+            id="errorResult"
+            class="stat-value">
+
+                -
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-title">
+                🧠 Kepercayaan
+            </div>
+
+            <div
+            id="confidenceResult"
+            class="stat-value">
+
+                -
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <p>
+        Akurasi:
+        <span id="accuracyBadge">-</span>
+    </p>
 
             <p>
                 Sekolah digunakan:
@@ -104,7 +169,7 @@
 
     </div>
 
-    <div id="historyBox">
+   <div id="historyPage">
 
         <h2>📜 Riwayat Perhitungan</h2>
 
