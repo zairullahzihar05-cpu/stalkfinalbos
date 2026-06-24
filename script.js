@@ -427,6 +427,44 @@ document
         .textContent =
         error.toFixed(2)
         + " meter";
+      
+        const badge =
+        document.getElementById(
+            "accuracyBadge"
+        );
+
+        badge.className = "";
+
+        if(error < 20){
+
+            badge.textContent =
+            "🟢 Sangat Akurat";
+
+            badge.classList.add(
+                "accuracy-good"
+            );
+        
+        }
+        else if(error < 50){
+
+            badge.textContent =
+            "🟡 Cukup Akurat";
+
+            badge.classList.add(
+                "accuracy-medium"
+            );
+
+        }
+        else{
+
+            badge.textContent =
+            "🔴 Perlu Dicek";
+
+            badge.classList.add(
+                "accuracy-bad"
+            );
+
+        }
 
         const ul =
         document
