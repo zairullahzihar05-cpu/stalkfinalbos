@@ -37,7 +37,7 @@ for (const school in schools) {
         <input
             type="number"
             step="0.01"
-            id="${school.replaceAll(' ','_')}"
+            id="${school}"
             placeholder="Masukkan jarak (meter)"
         >
     `;
@@ -300,7 +300,7 @@ document
             const value =
             document
             .getElementById(
-                school.replaceAll(' ','_')
+                school
             )
             .value;
 
