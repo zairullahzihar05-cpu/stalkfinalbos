@@ -1,5 +1,3 @@
-alert("SCRIPT LOADED");
-
 // =====================================================
 // DATA SMA
 // =====================================================
@@ -628,6 +626,10 @@ L.marker(
         houseIcon
     }
 )
+.addTo(map)
+.bindPopup(
+    "Perkiraan Rumah"
+);
 
           const houseArea =
 L.circle(
@@ -651,11 +653,6 @@ L.circle(
 circleLayers.push(
     houseArea
 );
-          
-        .addTo(map)
-        .bindPopup(
-            "Perkiraan Rumah"
-        );
 
  const colors = [
     "#2563eb",
@@ -855,7 +852,6 @@ document
     }
 );
 
-alert("SAMPAI LOAD HISTORY");
 loadHistory();
 
 // =====================================================
