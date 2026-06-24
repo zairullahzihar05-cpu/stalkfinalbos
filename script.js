@@ -551,6 +551,30 @@ else{
 
         }
 
+      const confidence =
+document.getElementById(
+    "confidenceResult"
+);
+
+if(error < 20){
+
+    confidence.textContent =
+    "Tinggi";
+
+}
+else if(error < 50){
+
+    confidence.textContent =
+    "Sedang";
+
+}
+else{
+
+    confidence.textContent =
+    "Rendah";
+
+}
+      
         const ul =
         document
         .getElementById(
