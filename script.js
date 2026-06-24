@@ -604,7 +604,6 @@ L.marker(
             schools[school][1];
 
 const colors = [
-
     "#2563eb",
     "#16a34a",
     "#9333ea",
@@ -612,13 +611,17 @@ const colors = [
     "#ea580c",
     "#0891b2",
     "#be123c"
-
 ];
-          
-            const circle =
-            let colorIndex = 0;
+
+let colorIndex = 0;
 
 for(const school in distances){
+
+    const lat =
+    schools[school][0];
+
+    const lon =
+    schools[school][1];
 
     const color =
     colors[
@@ -628,11 +631,9 @@ for(const school in distances){
 
     colorIndex++;
 
-    ...
-
     const circle =
     L.circle(
-        [lat,lon],
+        [lat, lon],
         {
             radius:
             distances[school],
@@ -643,22 +644,12 @@ for(const school in distances){
             fill:false
         }
     )
-                [lat,lon],
-                {
-                    radius:
-                    distances[
-                        school
-                    ],
-                    fill:false
-                }
-            )
-            .addTo(map);
+    .addTo(map);
 
-            circleLayers
-            .push(
-                circle
-            );
-        }
+    circleLayers.push(
+        circle
+    );
+}
 
        const bounds = [];
 
