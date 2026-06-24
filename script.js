@@ -473,6 +473,24 @@ document
             points
         );
 
+let houseRadius;
+
+if(error < 20){
+
+    houseRadius = 25;
+
+}
+else if(error < 50){
+
+    houseRadius = 50;
+
+}
+else{
+
+    houseRadius = 100;
+
+}
+      
         document
         .getElementById(
             "latResult"
@@ -586,6 +604,30 @@ L.marker(
         houseIcon
     }
 )
+
+          const houseArea =
+L.circle(
+    [gps.lat, gps.lon],
+    {
+        radius:
+        houseRadius,
+
+        color:
+        "#f97316",
+
+        fillColor:
+        "#f97316",
+
+        fillOpacity:
+        0.15
+    }
+)
+.addTo(map);
+
+circleLayers.push(
+    houseArea
+);
+          
         .addTo(map)
         .bindPopup(
             "Perkiraan Rumah"
