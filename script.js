@@ -5,7 +5,6 @@ alert("SCRIPT LOADED");
 // =====================================================
 
 const schools = {
-  alert("DATA SEKOLAH LOLOS");
   "SMAN 1": [-3.316851, 114.582700],
   "SMAN 2": [-3.317361, 114.583359],
   "SMAN 3": [-3.318849, 114.615706],
@@ -592,18 +591,7 @@ L.marker(
             "Perkiraan Rumah"
         );
 
-        for(
-            const school
-            in distances
-        ){
-
-            const lat =
-            schools[school][0];
-
-            const lon =
-            schools[school][1];
-
-const colors = [
+ const colors = [
     "#2563eb",
     "#16a34a",
     "#9333ea",
