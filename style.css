@@ -272,6 +272,16 @@ button:hover{
         0.08
     );
 
+     transition:
+    all 0.3s ease;
+    
+}
+
+#result:hover{
+
+    transform:
+    translateY(-2px);
+
 }
 
 #result h2 {
@@ -298,8 +308,13 @@ button:hover{
 }
 
 #map {
-    width: 100%;
-    height: 100vh;
+
+    width:100%;
+
+    height:100vh;
+
+    border-radius:20px;
+
 }
 
 /* ===========================
@@ -341,11 +356,52 @@ button:hover{
 }
 
 #historyBox{
+
     margin-top:20px;
+
     padding:15px;
-    background:white;
-    border-radius:12px;
-    border:1px solid #ddd;
+
+    background:
+    rgba(
+        255,
+        255,
+        255,
+        0.65
+    );
+
+    backdrop-filter:
+    blur(12px);
+
+    border-radius:16px;
+
+    border:
+    1px solid
+    rgba(
+        255,
+        255,
+        255,
+        0.3
+    );
+
+    box-shadow:
+    0 8px 24px
+    rgba(
+        0,
+        0,
+        0,
+        0.08
+    );
+
+    transition:
+    all 0.3s ease;
+
+}
+
+#historyBox:hover{
+
+    transform:
+    translateY(-2px);
+
 }
 
 .history-item{
