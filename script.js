@@ -561,11 +561,31 @@ document
             }
         );
 
+const houseIcon = new L.Icon({
+
+    iconUrl:
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+
+    shadowUrl:
+    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+
+    iconSize:[25,41],
+    iconAnchor:[12,41],
+    popupAnchor:[1,-34]
+
+});
+      
         houseMarker =
-        L.marker([
-            gps.lat,
-            gps.lon
-        ])
+L.marker(
+    [
+        gps.lat,
+        gps.lon
+    ],
+    {
+        icon:
+        houseIcon
+    }
+)
         .addTo(map)
         .bindPopup(
             "Perkiraan Rumah"
@@ -582,8 +602,46 @@ document
             const lon =
             schools[school][1];
 
+const colors = [
+
+    "#2563eb",
+    "#16a34a",
+    "#9333ea",
+    "#dc2626",
+    "#ea580c",
+    "#0891b2",
+    "#be123c"
+
+];
+          
             const circle =
-            L.circle(
+            let colorIndex = 0;
+
+for(const school in distances){
+
+    const color =
+    colors[
+        colorIndex %
+        colors.length
+    ];
+
+    colorIndex++;
+
+    ...
+
+    const circle =
+    L.circle(
+        [lat,lon],
+        {
+            radius:
+            distances[school],
+
+            color:
+            color,
+
+            fill:false
+        }
+    )
                 [lat,lon],
                 {
                     radius:
