@@ -180,6 +180,73 @@ function clearMap(){
 }
 
 // =====================================================
+// RIWAYAT
+// =====================================================
+
+function loadHistory(){
+
+    const historyList =
+    document.getElementById(
+        "historyList"
+    );
+
+    const history =
+    JSON.parse(
+        localStorage.getItem(
+            "trilaterasiHistory"
+        )
+    ) || [];
+
+    if(history.length === 0){
+
+        historyList.innerHTML =
+        "Belum ada riwayat";
+
+        return;
+    }
+
+    historyList.innerHTML = "";
+
+    history
+    .slice()
+    .reverse()
+    .forEach(item => {
+
+        const div =
+        document.createElement(
+            "div"
+        );
+
+        div.className =
+        "history-item";
+
+        div.innerHTML = `
+            <b>${item.time}</b><br>
+            Lat:
+            ${item.lat}<br>
+
+            Lon:
+            ${item.lon}<br>
+
+            Error:
+            ${item.error} m<br>
+
+            <a href="
+            https://maps.google.com/?q=${item.lat},${item.lon}
+            " target="_blank">
+
+            📍 Buka Maps
+
+            </a>
+        `;
+
+        historyList
+        .appendChild(div);
+
+    });
+}
+
+// =====================================================
 // HITUNG ERROR
 // =====================================================
 
@@ -534,14 +601,58 @@ document
             );
         }
 
-        map.setView(
-            [
-                gps.lat,
-                gps.lon
-            ],
-            15
-        );
+       const bounds = [];
 
+bounds.push([
+    gps.lat,
+    gps.lon
+]);
+
+for(const school in distances){
+
+    bounds.push(
+        schools[school]
+    );
+}
+
+map.fitBounds(
+    bounds,
+    {
+        padding:[50,50]
+    }
+);
+
+      const history =
+JSON.parse(
+    localStorage.getItem(
+        "trilaterasiHistory"
+    )
+) || [];
+
+history.push({
+
+    lat:
+    gps.lat.toFixed(8),
+
+    lon:
+    gps.lon.toFixed(8),
+
+    error:
+    error.toFixed(2),
+
+    time:
+    new Date()
+    .toLocaleString()
+
+});
+
+localStorage.setItem(
+    "trilaterasiHistory",
+    JSON.stringify(history)
+);
+
+loadHistory();
+      
         const mapsUrl =
         `https://maps.google.com/?q=${gps.lat},${gps.lon}`;
 
@@ -639,3 +750,5 @@ document
 
     }
 );
+
+loadHistory();
