@@ -176,3 +176,340 @@ function clearMap(){
         houseMarker = null;
     }
 }
+
+// =====================================================
+// HITUNG ERROR
+// =====================================================
+
+function calculateError(
+    x,
+    y,
+    points
+){
+
+    let total = 0;
+
+    for(const p of points){
+
+        const dx = x - p.x;
+        const dy = y - p.y;
+
+        const predicted =
+        Math.sqrt(
+            dx * dx +
+            dy * dy
+        );
+
+        total +=
+        Math.abs(
+            predicted - p.distance
+        );
+    }
+
+    return total / points.length;
+}
+
+// =====================================================
+// LEAST SQUARES OPTIMIZER
+// =====================================================
+
+function trilaterate(points){
+
+    let x = 0;
+    let y = 0;
+
+    for(const p of points){
+
+        x += p.x;
+        y += p.y;
+    }
+
+    x /= points.length;
+    y /= points.length;
+
+    const learningRate = 0.05;
+
+    for(let iter=0; iter<5000; iter++){
+
+        let gradX = 0;
+        let gradY = 0;
+
+        for(const p of points){
+
+            const dx = x - p.x;
+            const dy = y - p.y;
+
+            const dist =
+            Math.sqrt(
+                dx*dx +
+                dy*dy
+            );
+
+            if(dist < 1){
+                continue;
+            }
+
+            const error =
+            dist - p.distance;
+
+            gradX +=
+            error *
+            dx /
+            dist;
+
+            gradY +=
+            error *
+            dy /
+            dist;
+        }
+
+        x -=
+        learningRate *
+        gradX /
+        points.length;
+
+        y -=
+        learningRate *
+        gradY /
+        points.length;
+    }
+
+    return {x,y};
+}
+
+// =====================================================
+// TOMBOL HITUNG
+// =====================================================
+
+document
+.getElementById(
+    "calculateBtn"
+)
+.addEventListener(
+    "click",
+    function(){
+
+        clearMap();
+
+        const distances = {};
+
+        const usedSchools = [];
+
+        for(const school in schools){
+
+            const value =
+            document
+            .getElementById(
+                school
+            )
+            .value;
+
+            if(
+                value !== ""
+            ){
+
+                distances[school] =
+                parseFloat(
+                    value
+                );
+
+                usedSchools
+                .push(
+                    school
+                );
+            }
+        }
+
+        if(
+            usedSchools.length < 3
+        ){
+
+            alert(
+                "Minimal 3 sekolah."
+            );
+
+            return;
+        }
+
+        const refSchool =
+        Object.keys(
+            schools
+        )[0];
+
+        const refLat =
+        schools[
+            refSchool
+        ][0];
+
+        const refLon =
+        schools[
+            refSchool
+        ][1];
+
+        const points = [];
+
+        for(
+            const school
+            in distances
+        ){
+
+            const lat =
+            schools[school][0];
+
+            const lon =
+            schools[school][1];
+
+            const xy =
+            latlonToXY(
+                lat,
+                lon,
+                refLat,
+                refLon
+            );
+
+            points.push({
+
+                x: xy.x,
+
+                y: xy.y,
+
+                distance:
+                distances[
+                    school
+                ]
+
+            });
+        }
+
+        const result =
+        trilaterate(
+            points
+        );
+
+        const gps =
+        xyToLatLon(
+
+            result.x,
+            result.y,
+
+            refLat,
+            refLon
+
+        );
+
+        const error =
+        calculateError(
+            result.x,
+            result.y,
+            points
+        );
+
+        document
+        .getElementById(
+            "latResult"
+        )
+        .textContent =
+        gps.lat.toFixed(8);
+
+        document
+        .getElementById(
+            "lonResult"
+        )
+        .textContent =
+        gps.lon.toFixed(8);
+
+        document
+        .getElementById(
+            "errorResult"
+        )
+        .textContent =
+        error.toFixed(2)
+        + " meter";
+
+        const ul =
+        document
+        .getElementById(
+            "usedSchools"
+        );
+
+        ul.innerHTML = "";
+
+        usedSchools
+        .forEach(
+            school => {
+
+                const li =
+                document
+                .createElement(
+                    "li"
+                );
+
+                li.textContent =
+                school;
+
+                ul.appendChild(
+                    li
+                );
+
+            }
+        );
+
+        houseMarker =
+        L.marker([
+            gps.lat,
+            gps.lon
+        ])
+        .addTo(map)
+        .bindPopup(
+            "Perkiraan Rumah"
+        );
+
+        for(
+            const school
+            in distances
+        ){
+
+            const lat =
+            schools[school][0];
+
+            const lon =
+            schools[school][1];
+
+            const circle =
+            L.circle(
+                [lat,lon],
+                {
+                    radius:
+                    distances[
+                        school
+                    ],
+                    fill:false
+                }
+            )
+            .addTo(map);
+
+            circleLayers
+            .push(
+                circle
+            );
+        }
+
+        map.setView(
+            [
+                gps.lat,
+                gps.lon
+            ],
+            15
+        );
+
+        const mapsUrl =
+        `https://maps.google.com/?q=${gps.lat},${gps.lon}`;
+
+        document
+        .getElementById(
+            "mapsLink"
+        )
+        .href =
+        mapsUrl;
+    }
+);
