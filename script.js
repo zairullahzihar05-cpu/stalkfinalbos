@@ -562,7 +562,27 @@ document
 .getElementById("resetBtn")
 .addEventListener("click", () => {
 
-    alert("RESET DIKLIK");
+    document
+    .querySelectorAll("input[type='number']")
+    .forEach(input => {
+        input.value = "";
+    });
+
+    clearMap();
+
+    document.getElementById("latResult").textContent = "-";
+    document.getElementById("lonResult").textContent = "-";
+    document.getElementById("errorResult").textContent = "-";
+
+    const badge =
+    document.getElementById("accuracyBadge");
+
+    if(badge){
+        badge.textContent = "-";
+        badge.className = "";
+    }
+
+    document.getElementById("usedSchools").innerHTML = "";
 
 });
 
