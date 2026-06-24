@@ -219,3 +219,20 @@ button {
     color:#2563eb;
     font-weight:bold;
 }
+
+#clearHistoryBtn{
+
+    background:#dc2626;
+    color:white;
+
+    margin-top:10px;
+
+    width:100%;
+
+}
+
+#clearHistoryBtn:hover{
+
+    background:#b91c1c;
+
+}
