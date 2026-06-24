@@ -559,63 +559,38 @@ document
 // =====================================================
 
 document
-.getElementById(
-    "resetBtn"
-)
-.addEventListener(
-    "click",
-    function(){
+.getElementById("resetBtn")
+.addEventListener("click", () => {
 
-        for(
-            const school
-            in schools
-        ){
+    document
+    .querySelectorAll("input[type='number']")
+    .forEach(input => {
+        input.value = "";
+    });
 
-            document
-            .getElementById(
-                school.replaceAll(
-                    " ",
-                    "_"
-                )
-            )
-            .value = "";
+    clearMap();
 
-        }
+    document.getElementById(
+        "latResult"
+    ).textContent = "-";
 
-        clearMap();
+    document.getElementById(
+        "lonResult"
+    ).textContent = "-";
 
-        document
-        .getElementById(
-            "latResult"
-        )
-        .textContent = "-";
+    document.getElementById(
+        "errorResult"
+    ).textContent = "-";
 
-        document
-        .getElementById(
-            "lonResult"
-        )
-        .textContent = "-";
+    document.getElementById(
+        "accuracyBadge"
+    ).textContent = "-";
 
-        document
-        .getElementById(
-            "errorResult"
-        )
-        .textContent = "-";
+    document.getElementById(
+        "usedSchools"
+    ).innerHTML = "";
 
-        document
-        .getElementById(
-            "accuracyBadge"
-        )
-        .textContent = "-";
-
-        document
-        .getElementById(
-            "usedSchools"
-        )
-        .innerHTML = "";
-
-    }
-);
+});
 
 // =====================================================
 // COPY KOORDINAT
