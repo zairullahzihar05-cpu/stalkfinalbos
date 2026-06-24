@@ -236,3 +236,21 @@ button {
     background:#b91c1c;
 
 }
+
+#downloadPdfBtn{
+
+    background:#2563eb;
+
+    color:white;
+
+    margin-top:10px;
+
+    width:100%;
+
+}
+
+#downloadPdfBtn:hover{
+
+    background:#1d4ed8;
+
+}
