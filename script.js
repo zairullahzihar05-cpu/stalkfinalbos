@@ -553,3 +553,116 @@ document
         mapsUrl;
     }
 );
+
+// =====================================================
+// RESET
+// =====================================================
+
+document
+.getElementById(
+    "resetBtn"
+)
+.addEventListener(
+    "click",
+    function(){
+
+        for(
+            const school
+            in schools
+        ){
+
+            document
+            .getElementById(
+                school.replaceAll(
+                    " ",
+                    "_"
+                )
+            )
+            .value = "";
+
+        }
+
+        clearMap();
+
+        document
+        .getElementById(
+            "latResult"
+        )
+        .textContent = "-";
+
+        document
+        .getElementById(
+            "lonResult"
+        )
+        .textContent = "-";
+
+        document
+        .getElementById(
+            "errorResult"
+        )
+        .textContent = "-";
+
+        document
+        .getElementById(
+            "accuracyBadge"
+        )
+        .textContent = "-";
+
+        document
+        .getElementById(
+            "usedSchools"
+        )
+        .innerHTML = "";
+
+    }
+);
+
+// =====================================================
+// COPY KOORDINAT
+// =====================================================
+
+document
+.getElementById(
+    "copyBtn"
+)
+.addEventListener(
+    "click",
+    function(){
+
+        const lat =
+        document
+        .getElementById(
+            "latResult"
+        )
+        .textContent;
+
+        const lon =
+        document
+        .getElementById(
+            "lonResult"
+        )
+        .textContent;
+
+        if(
+            lat === "-"
+        ){
+            alert(
+                "Belum ada hasil."
+            );
+            return;
+        }
+
+        navigator
+        .clipboard
+        .writeText(
+            lat +
+            "," +
+            lon
+        );
+
+        alert(
+            "Koordinat berhasil disalin!"
+        );
+
+    }
+);
