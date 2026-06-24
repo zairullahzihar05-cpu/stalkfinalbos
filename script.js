@@ -810,3 +810,35 @@ document
 );
 
 loadHistory();
+
+// =====================================================
+// HAPUS RIWAYAT
+// =====================================================
+
+document
+.getElementById(
+    "clearHistoryBtn"
+)
+.addEventListener(
+    "click",
+    () => {
+
+        const confirmDelete =
+        confirm(
+            "Hapus semua riwayat?"
+        );
+
+        if(
+            !confirmDelete
+        ){
+            return;
+        }
+
+        localStorage.removeItem(
+            "trilaterasiHistory"
+        );
+
+        loadHistory();
+
+    }
+);
